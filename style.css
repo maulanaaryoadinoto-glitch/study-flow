@@ -1,0 +1,393 @@
+/* ==========================================================
+   Study Flow — style.css
+   Tema gelap jadi tampilan utama.
+   Tema terang aktif lewat [data-theme="light"] (tombol di header).
+   ========================================================== */
+
+/* ---------- Warna (tinggal ubah di sini) ---------- */
+:root {
+    --bg: #0f172a;              /* latar halaman */
+    --card: #1e293b;            /* kartu & header */
+    --input: #334155;           /* kolom input & item tugas */
+    --border: #334155;          /* garis tipis */
+    --border-strong: #475569;   /* garis input */
+    --text: #e2e8f0;            /* teks utama */
+    --text-soft: #94a3b8;       /* teks pendukung */
+    --accent: #6366f1;          /* tombol */
+    --accent-strong: #4f46e5;   /* tombol saat di-hover */
+    --accent-text: #a5b4fc;     /* angka timer & link saat di-hover */
+    --success: #22c55e;         /* progress & centang */
+}
+
+[data-theme="light"] {
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --input: #e2e8f0;
+    --border: #cbd5e1;
+    --border-strong: #94a3b8;
+    --text: #0f172a;
+    --text-soft: #475569;
+    --accent-text: #4f46e5;
+}
+
+
+/* ---------- Dasar ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+
+/* ---------- Header & navigasi ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 12px 24px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    font-size: 1.25rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--accent-text);
+}
+
+
+/* ---------- Tombol & input ---------- */
+button {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--accent-strong);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.btn-secondary {
+    background: var(--input);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--border-strong);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    padding: 4px 10px;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.theme-toggle:hover {
+    background: var(--input);
+}
+
+input[type="text"] {
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: var(--input);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-soft);
+}
+
+input[type="text"]:focus {
+    outline: 2px solid var(--accent);
+    border-color: transparent;
+}
+
+
+/* ---------- Konten ---------- */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 40px 0 10px;
+    scroll-margin-top: 70px;
+}
+
+section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+section p {
+    color: var(--text-soft);
+}
+
+#home {
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+#home h2 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    margin-bottom: 12px;
+}
+
+#home p {
+    max-width: 520px;
+    margin: 0 auto 24px;
+}
+
+#home button {
+    padding: 12px 26px;
+    font-size: 1rem;
+}
+
+#about p {
+    max-width: 640px;
+}
+
+
+/* ---------- Kartu ---------- */
+.cards {
+    display: grid;
+    /* minmax(0, 1fr) = kolom boleh mengecil, jadi kartu tidak melebar di layar HP */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 24px;
+    align-items: start;
+}
+
+.todo-card {
+    grid-column: 1 / -1;   /* kartu tugas selebar penuh */
+}
+
+.study-card,
+.todo-card,
+.goal-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    min-width: 0;
+}
+
+.study-card h3,
+.todo-card h3,
+.goal-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+}
+
+
+/* ---------- Pomodoro ---------- */
+#timer {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-text);
+    margin: 6px 0 16px;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* ---------- Input tugas & goal ---------- */
+.todo-input {
+    display: flex;
+    gap: 10px;
+}
+
+.todo-input input {
+    flex: 1;
+    min-width: 0;
+}
+
+#goalDisplay {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: var(--input);
+    border-radius: 10px;
+    color: var(--text-soft);
+}
+
+#goalDisplay.has-goal {
+    color: var(--text);
+    border-left: 4px solid var(--accent);
+}
+
+
+/* ---------- Progress bar ---------- */
+.progress-container {
+    margin: 18px 0 14px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 10px;
+    background: var(--input);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: var(--success);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+
+/* ---------- Daftar tugas ---------- */
+#taskList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--input);
+    border-radius: 10px;
+}
+
+#taskList li span {
+    flex: 1;
+    word-break: break-word;
+}
+
+#taskList li.done span {
+    text-decoration: line-through;
+    color: var(--text-soft);
+}
+
+#taskList li input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--success);
+    cursor: pointer;
+}
+
+#taskList li.empty {
+    background: transparent;
+    justify-content: center;
+    color: var(--text-soft);
+}
+
+.delete-btn {
+    background: transparent;
+    padding: 4px 8px;
+    font-size: 1rem;
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 28px 20px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    border-top: 1px solid var(--border);
+}
+
+
+/* ---------- Tampilan HP ---------- */
+@media (max-width: 700px) {
+    header {
+        padding: 10px 16px;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    .cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #timer {
+        font-size: 3rem;
+    }
+}

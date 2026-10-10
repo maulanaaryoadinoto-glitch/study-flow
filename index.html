@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Flow — Portfolio</title>
+
+    <!-- Font Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Study Flow</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#project">Project</a>
+
+            <!-- Tombol ganti tema gelap / terang -->
+            <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">☀️</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home">
+            <h2>BELAJAR TEKNOLOGI, MENCIPTAKAN SOLUSI</h2>
+
+            <p>
+                Saya sedang belajar coding dan membuat project web
+                bernama Study Flow.
+            </p>
+
+            <button type="button" onclick="sayHello()">
+                Mulai untuk belajar
+            </button>
+        </section>
+
+
+        <section id="about">
+            <h2>Tentang Saya</h2>
+
+            <p>
+                Halo, namaku Aryo, siswa kelas 9 di SMP NEGERI 2 LUMAJANG.
+        Aku mulai belajar coding sejak bulan Maret dan sekarang sedang
+        mendalami HTML, CSS, dan JavaScript dengan memanfaatkan
+        inteligence
+                
+            </p>
+        </section>
+
+
+        <section id="project">
+            <h2>Study Flow 📚</h2>
+
+            <p>
+                Study Flow kubuat karena aku sering susah mengatur waktu belajar.
+        Dari project ini aku belajar membuat timer, daftar tugas, dan
+        menyimpan data di browser.
+            </p>
+
+            <div class="cards">
+
+                <!-- Kartu Pomodoro -->
+                <div class="study-card">
+                    <h3>⏱️ Pomodoro Timer</h3>
+
+                    <div id="timer">25:00</div>
+
+                    <div class="timer-buttons">
+                        <button type="button" onclick="startTimer()">Start</button>
+                        <button type="button" class="btn-secondary" onclick="resetTimer()">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Kartu Daily Goal -->
+                <div class="goal-card">
+                    <h3>🎯 Daily Goal</h3>
+
+                    <div class="todo-input">
+                        <input
+                            type="text"
+                            id="goalInput"
+                            placeholder="Target hari ini..."
+                        >
+
+                        <button type="button" onclick="saveGoal()">Simpan</button>
+                    </div>
+
+                    <p id="goalDisplay">Belum ada target hari ini.</p>
+                </div>
+
+                <!-- Kartu To-Do -->
+                <div class="todo-card">
+                    <h3>📋 Study Tasks</h3>
+
+                    <div class="todo-input">
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="Masukkan tugas..."
+                        >
+
+                        <button type="button" onclick="addTask()">Tambah</button>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span id="progressText">0%</span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <ul id="taskList"></ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 Study Flow</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
